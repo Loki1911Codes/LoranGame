@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "4MechPop.sln"
+    "dotnet.defaultSolution": "LoranGame.sln"
 }

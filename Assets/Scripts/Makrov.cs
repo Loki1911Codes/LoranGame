@@ -7,6 +7,10 @@ public class Makrov : MonoBehaviour
 
     public float raycastDistance = Mathf.Infinity;
     public float shotForce = 10f;
+    public Transform weaponPivot;
+    public Camera Cam;
+    public  AudioClip shooting;
+    public AudioSource shot;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +21,11 @@ public class Makrov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    }   
+
+    public void FollowCamera()
+    {
+
     }
 
     public void Fire()
@@ -33,5 +41,6 @@ public class Makrov : MonoBehaviour
                 hitRigidbody.AddForceAtPosition(transform.forward * shotForce, hit.point, ForceMode.Impulse);
             }
         }
+        shot.Play();
     }
 }
