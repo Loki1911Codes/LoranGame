@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - ThrowingHook
+  - Boundary
   layers:
   - Default
   - TransparentFX

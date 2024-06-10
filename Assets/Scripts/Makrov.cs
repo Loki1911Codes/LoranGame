@@ -6,11 +6,12 @@ public class Makrov : MonoBehaviour
 {
 
     public float raycastDistance = Mathf.Infinity;
-    public float shotForce = 10f;
+    public float shotForce = 100f;
     public Transform weaponPivot;
     public Camera Cam;
     public  AudioClip shooting;
     public AudioSource shot;
+    public GameObject bulletPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class Makrov : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
         {
+            
             // Check if the ray hits a rigidbody
             Rigidbody hitRigidbody = hit.collider.GetComponent<Rigidbody>();
             if (hitRigidbody != null)
@@ -40,6 +42,8 @@ public class Makrov : MonoBehaviour
                 // Apply an impulse force to the rigidbody at the hit point
                 hitRigidbody.AddForceAtPosition(transform.forward * shotForce, hit.point, ForceMode.Impulse);
             }
+            GameObject bullet = Instantiate(bulletPrefab, hit.point, Quaternion.identity);
+            bullet.transform.LookAt(hit.point + hit.normal);
         }
         shot.Play();
     }
